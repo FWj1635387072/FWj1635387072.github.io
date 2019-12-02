@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://FWj1635387072.github.io/"/>
-  <updated>2019-11-26T08:39:19.612Z</updated>
+  <updated>2019-12-02T13:31:39.619Z</updated>
   <id>https://FWj1635387072.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>算法竞赛准备3----排序2（Java语言）</title>
+    <link href="https://FWj1635387072.github.io/2019/12/02/%E6%8E%92%E5%BA%8F2/"/>
+    <id>https://FWj1635387072.github.io/2019/12/02/排序2/</id>
+    <published>2019-12-02T13:32:07.190Z</published>
+    <updated>2019-12-02T13:31:39.619Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><p>快排</p><!--more--><h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><p>一遍单向定主元</p><p>定完主元，然后扫描，定义左右指针，如果左指针的值小于主元，左指针向右移，如果左指针的值大于主元，与右指针交换值，然后左移右指针。左指针和右指针在最后会相遇</p><p>用分治法形成了递归，一分为二，二分为四。。。</p><p>Util为自己写的一个类，自动生成随机数组。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//快排</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sortQuick</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (left &lt; right) &#123;</span><br><span class="line">           <span class="keyword">int</span> q = partition(arr, left, right);</span><br><span class="line">           sortQuick(arr, left, q - <span class="number">1</span>);</span><br><span class="line">           sortQuick(arr, q + <span class="number">1</span>, right); <span class="comment">//分治法</span></span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//一遍单向排序</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> Pmain = arr[left];</span><br><span class="line">       <span class="keyword">int</span> pleft = left + <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">int</span> pright = right;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">while</span> (pleft &lt;= pright) &#123;</span><br><span class="line">           <span class="keyword">if</span> (arr[pleft] &lt;= Pmain) &#123;</span><br><span class="line">               pleft++;</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               swap(arr, pleft, pright);</span><br><span class="line">               pright--;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       swap(arr, left, pright);</span><br><span class="line">       <span class="keyword">return</span> pright;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> temp = arr[a];</span><br><span class="line">       arr[a] = arr[b];</span><br><span class="line">       arr[b] = temp;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span>[] arr = Util.getIntArr(<span class="number">20</span>, <span class="number">0</span>, <span class="number">100</span>);</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">           System.out.println(i);</span><br><span class="line">       &#125;</span><br><span class="line">       sortQuick(arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">       System.out.println(<span class="string">"----------------------------"</span>);</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">           System.out.println(i);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+
+
+
+
+
+
+&lt;p&gt;快排&lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;快排&quot;&gt;&lt;a href=&quot;#快排&quot; class=&quot;headerlink&quot; title=&quot;快排&quot;&gt;&lt;/a&gt;快排&lt;/h2&gt;&lt;p&gt;一遍单向定主元&lt;/p&gt;
+&lt;p&gt;定完主元，然后
+      
+    
+    </summary>
+    
+    
+      <category term="笔记" scheme="https://FWj1635387072.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="学习笔记" scheme="https://FWj1635387072.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="algorithm" scheme="https://FWj1635387072.github.io/tags/algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>算法竞赛准备1----排序（Java语言）</title>
