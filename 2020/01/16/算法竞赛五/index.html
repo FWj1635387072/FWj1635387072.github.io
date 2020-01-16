@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="练习题1">
+<meta name="keywords" content="学习笔记,algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法竞赛准备5----练习1（Java语言）">
+<meta property="og:url" content="https:&#x2F;&#x2F;fwj1635387072.github.io&#x2F;2020&#x2F;01&#x2F;16&#x2F;%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E4%BA%94&#x2F;index.html">
+<meta property="og:site_name" content="付文杰的博客">
+<meta property="og:description" content="练习题1">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-16T07:03:03.122Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://fwj1635387072.github.io/2020/01/16/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E4%BA%94/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+
+  <title>算法竞赛准备5----练习1（Java语言） | 付文杰的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">付文杰的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">个人博客  |  日常</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+  <div align="middle"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=27588222&auto=1&height=32"></iframe></div>
+
+</nav>
+
+      </div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://FWj1635387072.github.io/2020/01/16/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E4%BA%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headImage.jpg">
+      <meta itemprop="name" content="付文杰">
+      <meta itemprop="description" content="兰州交通大学 | 本科生 <br> 信息管理与信息系统">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付文杰的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          算法竞赛准备5----练习1（Java语言）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-16 15:03:35 / 修改时间：15:03:03" itemprop="dateCreated datePublished" datetime="2020-01-16T15:03:35+08:00">2020-01-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>练习题1</p>
+<a id="more"></a>
+
+<h2 id="7-1-特殊a串数列求和"><a href="#7-1-特殊a串数列求和" class="headerlink" title="7-1 特殊a串数列求和"></a><strong>7-1</strong> <strong>特殊a串数列求和</strong></h2><p>给定两个均不超过9的正整数<em>a</em>和<em>n</em>，要求编写程序求<em>a</em>+<em>a**a</em>+<em>a<strong>a</strong>a</em>++⋯+<em>a*</em>a<em>⋯</em>a<em>（</em>n<em>个</em>a*）之和。</p>
+<p><strong>输入格式：</strong></p>
+<p>输入在一行中给出不超过9的正整数<em>a</em>和<em>n</em>。</p>
+<p><strong>输出格式：</strong></p>
+<p>在一行中按照“s = 对应的和”的格式输出。</p>
+<p><strong>输入样例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2，3</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s = 246</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> a = scan.nextInt();</span><br><span class="line">        <span class="keyword">int</span> n = scan.nextInt();</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>,temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n;i++)&#123;</span><br><span class="line">            temp = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i;j++)&#123;</span><br><span class="line">                temp = temp * <span class="number">10</span> + a;</span><br><span class="line">            &#125;</span><br><span class="line">            sum += temp;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sum);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-2-帅到没朋友"><a href="#7-2-帅到没朋友" class="headerlink" title="7-2 帅到没朋友"></a><strong>7-2</strong> <strong>帅到没朋友</strong></h2><p>当芸芸众生忙着在朋友圈中发照片的时候，总有一些人因为太帅而没有朋友。本题就要求你找出那些帅到没有朋友的人。</p>
+<p><strong>输入格式:</strong></p>
+<p>输入第一行给出一个正整数<code>N</code>（≤100），是已知朋友圈的个数；随后<code>N</code>行，每行首先给出一个正整数<code>K</code>（≤1000），为朋友圈中的人数，然后列出一个朋友圈内的所有人——为方便起见，每人对应一个ID号，为5位数字（从00000到99999），ID间以空格分隔；之后给出一个正整数<code>M</code>（≤10000），为待查询的人数；随后一行中列出<code>M</code>个待查询的ID，以空格分隔。</p>
+<p>注意：没有朋友的人可以是根本没安装“朋友圈”，也可以是只有自己一个人在朋友圈的人。虽然有个别自恋狂会自己把自己反复加进朋友圈，但题目保证所有<code>K</code>超过1的朋友圈里都至少有2个不同的人。</p>
+<p><strong>输出格式：</strong></p>
+<p>按输入的顺序输出那些帅到没朋友的人。ID间用1个空格分隔，行的首尾不得有多余空格。如果没有人太帅，则输出<code>No one is handsome</code>。</p>
+<p>注意：同一个人可以被查询多次，但只输出一次。</p>
+<p><strong>输入样例1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3 11111 22222 55555</span><br><span class="line">2 33333 44444</span><br><span class="line">4 55555 66666 99999 77777</span><br><span class="line">8</span><br><span class="line">55555 44444 10000 88888 22222 11111 23333 88888</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10000 88888 23333</span><br></pre></td></tr></table></figure>
+
+<p><strong>输入样例2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3 11111 22222 55555</span><br><span class="line">2 33333 44444</span><br><span class="line">4 55555 66666 99999 77777</span><br><span class="line">4</span><br><span class="line">55555 44444 22222 11111</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No one is handsome</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="comment">//Scanner 超时，集合输出，与最后的答案结果不一致</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">f2</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        List&lt;Integer&gt; friends = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        List&lt;Integer&gt; check = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> n = scan.nextInt();</span><br><span class="line">        <span class="keyword">int</span> k, m;</span><br><span class="line">        <span class="keyword">while</span> (n-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            k = scan.nextInt();</span><br><span class="line">            <span class="keyword">while</span> (k-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                friends.add(scan.nextInt());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        m = scan.nextInt();</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line">        <span class="keyword">while</span> (m-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            temp = scan.nextInt();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; check.size();i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check.get(i) == temp)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span>(i == check.size() - <span class="number">1</span> &amp;&amp; temp != check.get(i))</span><br><span class="line">                    check.add(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        check.removeAll(friends);</span><br><span class="line">        String s = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (Object i : check) &#123;</span><br><span class="line">            s += i + <span class="string">" "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">""</span>.equals(s))&#123;</span><br><span class="line">            System.out.println(<span class="string">"No one is handsome"</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            s = s.substring(<span class="number">0</span>,s.length()-<span class="number">1</span>);</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">//使用标记数组。如果有则填1，否则为0.</span></span><br><span class="line">      Scanner scan = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">      <span class="keyword">int</span>[] friends = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">100000</span>];</span><br><span class="line">      <span class="keyword">int</span> n,k,m;</span><br><span class="line">      <span class="keyword">int</span> friend;</span><br><span class="line">      n = scan.nextInt();</span><br><span class="line">      <span class="keyword">while</span>(n-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          k = scan.nextInt();</span><br><span class="line">          <span class="keyword">while</span>(k-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line">              friend = scan.nextInt();</span><br><span class="line">              friends[friend] = <span class="number">1</span>;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//输出，输出过标记为2，不在输出。</span></span><br><span class="line">      <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">      m = scan.nextInt();</span><br><span class="line">      <span class="keyword">while</span>(m-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line">          friend = scan.nextInt();</span><br><span class="line">          <span class="keyword">if</span>(m != <span class="number">1</span>&amp;&amp;friends[friend] == <span class="number">0</span>)&#123;</span><br><span class="line">              System.out.print(friend + <span class="string">" "</span>);</span><br><span class="line">              flag = <span class="keyword">true</span>;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span>(m == <span class="number">1</span> &amp;&amp; friends[friend] == <span class="number">0</span>)&#123;</span><br><span class="line">              System.out.print(friend);</span><br><span class="line">              flag = <span class="keyword">true</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          friends[friend] = <span class="number">2</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">          System.out.println(<span class="string">"No one is handsome"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3-互评成绩"><a href="#7-3-互评成绩" class="headerlink" title="7-3 互评成绩"></a>7-3 <strong>互评成绩</strong></h3><p>学生互评作业的简单规则是这样定的：每个人的作业会被<code>k</code>个同学评审，得到<code>k</code>个成绩。系统需要去掉一个最高分和一个最低分，将剩下的分数取平均，就得到这个学生的最后成绩。本题就要求你编写这个互评系统的算分模块。</p>
+<p><strong>输入格式：</strong></p>
+<p>输入第一行给出3个正整数<code>N</code>（3 &lt; <code>N</code> ≤104，学生总数）、<code>k</code>（3 ≤ <code>k</code> ≤ 10，每份作业的评审数）、<code>M</code>（≤ 20，需要输出的学生数）。随后<code>N</code>行，每行给出一份作业得到的<code>k</code>个评审成绩（在区间[0, 100]内），其间以空格分隔。</p>
+<p><strong>输出格式：</strong></p>
+<p>按非递减顺序输出最后得分最高的<code>M</code>个成绩，保留小数点后3位。分数间有1个空格，行首尾不得有多余空格。</p>
+<p><strong>输入样例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">6 5 3</span><br><span class="line">88 90 85 99 60</span><br><span class="line">67 60 80 76 70</span><br><span class="line">90 93 96 99 99</span><br><span class="line">78 65 77 70 72</span><br><span class="line">88 88 88 88 88</span><br><span class="line">55 55 55 55 55</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">87.667 88.000 96.000</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.text.DecimalFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> n, m, k;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>[] rec;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">double</span>[] score;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        DecimalFormat df = <span class="keyword">new</span> DecimalFormat(<span class="string">"0.000"</span>);</span><br><span class="line">        R.init(System.in);</span><br><span class="line">        n = R.nextInt();</span><br><span class="line">        k = R.nextInt();</span><br><span class="line">        m = R.nextInt();</span><br><span class="line">        rec = <span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">        score = <span class="keyword">new</span> <span class="keyword">double</span>[n];</span><br><span class="line">        <span class="keyword">float</span> sum;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k;j++)&#123;</span><br><span class="line">                rec[j] = R.nextInt();</span><br><span class="line">            &#125;</span><br><span class="line">            Arrays.sort(rec);</span><br><span class="line">            sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">1</span>;p &lt; k - <span class="number">1</span>;p++)&#123;</span><br><span class="line">                sum += rec[p];</span><br><span class="line">            &#125;</span><br><span class="line">            score[i] = sum / (k - <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(score);</span><br><span class="line">        String s = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n - m;i &lt; n;i++)&#123;</span><br><span class="line">            s += i == n - <span class="number">1</span> ?df.format(score[i]) :df.format(score[i]) + <span class="string">" "</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//内部类</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">R</span> </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> BufferedReader reader;</span><br><span class="line">        <span class="keyword">static</span> StringTokenizer tokenizer;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(InputStream input)</span></span>&#123;</span><br><span class="line">            reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(input));</span><br><span class="line">            tokenizer = <span class="keyword">new</span> StringTokenizer(<span class="string">""</span>);</span><br><span class="line">        &#125;      </span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> String <span class="title">next</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(!tokenizer.hasMoreTokens())&#123;</span><br><span class="line">                tokenizer = <span class="keyword">new</span> StringTokenizer(reader.readLine());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> tokenizer.nextToken();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">nextInt</span><span class="params">()</span> <span class="keyword">throws</span>  Exception</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.parseInt(next());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">static</span> Double <span class="title">nextDouble</span><span class="params">()</span> <span class="keyword">throws</span>  Exception</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Double.parseDouble(next());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      
+      <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
+      </div>
+
+      <footer class="post-footer">
+
+
+
+        
+<div>    
+ 
+ 
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+      <strong>本文作者：</strong>付文杰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="/2020/01/16/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E4%BA%94/" title="算法竞赛准备5----练习1（Java语言）">2020/01/16/算法竞赛五/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权： </strong>
+    本站文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议，请勿用于商业，转载注明出处！
+  </li>
+</ul>
+
+</div>
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 学习笔记</a>
+              <a href="/tags/algorithm/" rel="tag"><i class="fa fa-tag"></i> algorithm</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/01/13/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B4/" rel="next" title="算法竞赛准备4----例题（Java语言）">
+                  <i class="fa fa-chevron-left"></i> 算法竞赛准备4----例题（Java语言）
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27588222&auto=1&height=66"></iframe>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-特殊a串数列求和"><span class="nav-number">1.</span> <span class="nav-text">7-1 特殊a串数列求和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-帅到没朋友"><span class="nav-number">2.</span> <span class="nav-text">7-2 帅到没朋友</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-互评成绩"><span class="nav-number">2.1.</span> <span class="nav-text">7-3 互评成绩</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="付文杰"
+    src="/images/headImage.jpg">
+  <p class="site-author-name" itemprop="name">付文杰</p>
+  <div class="site-description" itemprop="description">兰州交通大学 | 本科生 <br> 信息管理与信息系统</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/FWj1635387072" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;FWj1635387072" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:1635387072@qq.com" title="E-Mail &amp;rarr; mailto:1635387072@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">付文杰</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">51k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:25</span>
+
+  <br>
+  <span id="sitetime"></span>
+
+</div>
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+        var t1 = Date.UTC(2019, 11, 7, 17, 50, 00); //北京时间2018-2-13 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"symbols_count_time":null,"symbols":true,"time":true,"total_symbols":true,"total_time":true,"log":false});</script></body>
+</html>
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
