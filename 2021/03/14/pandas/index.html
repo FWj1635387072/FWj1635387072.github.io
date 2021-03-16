@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="付文杰的博客">
 <meta property="og:description" content="Pandas的用法的总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-15T01:39:32.844Z">
+<meta property="og:updated_time" content="2021-03-16T13:46:24.415Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://fwj1635387072.github.io/2021/03/14/pandas/">
@@ -217,7 +217,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-15 09:39:32" itemprop="dateModified" datetime="2021-03-15T09:39:32+08:00">2021-03-15</time>
+                <time title="修改时间：2021-03-16 21:46:24" itemprop="dateModified" datetime="2021-03-16T21:46:24+08:00">2021-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,14 +237,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -322,7 +322,15 @@
 <p><code>loc</code>获取指定元素</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">row_index_83_age = titanic_survival.loc[<span class="number">83</span>,<span class="string">"Age"</span>]</span><br><span class="line">row_index_1000_pclass = titanic_survival.loc[<span class="number">766</span>,<span class="string">"Pclass"</span>]</span><br><span class="line">print(row_index_1000_pclass)</span><br><span class="line">print(row_index_83_age)</span><br></pre></td></tr></table></figure>
 
-<p>index    88</p>
+<p>处理数据后将index重置<code>reset_index()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new_titanic_survival = titanic_survival.sort_values(<span class="string">"Age"</span>,ascending=<span class="literal">False</span>)</span><br><span class="line">print(new_titanic_survival)</span><br><span class="line">titanic_reindexed = new_titanic_survival.reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">print(titanic_reindexed.iloc[<span class="number">0</span>:<span class="number">10</span>])</span><br></pre></td></tr></table></figure>
+
+<p>自定义函数：输出第100行元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hundred_row</span><span class="params">(column)</span>:</span></span><br><span class="line">    hundred_item = column.iloc[<span class="number">99</span>]</span><br><span class="line">    <span class="keyword">return</span> hundred_item</span><br><span class="line"></span><br><span class="line">hundred_row = titanic_survival.apply(hundred_row)</span><br><span class="line">print(hundred_row)</span><br></pre></td></tr></table></figure>
+
+<p>将Class列,修改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">which_class</span><span class="params">(row)</span>:</span></span><br><span class="line">    pclass = row[<span class="string">'Pclass'</span>]</span><br><span class="line">    <span class="keyword">if</span> pd.isnull(pclass):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Unknown"</span></span><br><span class="line">    <span class="keyword">elif</span> pclass == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"First Class"</span></span><br><span class="line">    <span class="keyword">elif</span> pclass == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Second Class"</span></span><br><span class="line">    <span class="keyword">elif</span> pclass == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Third Class"</span></span><br><span class="line">    </span><br><span class="line">classes = titanic_survival.apply(which_class,axis = <span class="number">1</span>)</span><br><span class="line">print(classes)</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -497,13 +505,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">154k</span>
+    <span title="站点总字数">155k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:17</span>
+    <span title="站点阅读时长">4:18</span>
 
   <br>
   <span id="sitetime"></span>
