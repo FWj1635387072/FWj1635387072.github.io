@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="付文杰的博客">
 <meta property="og:description" content="numpy的用法的总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-14T03:09:13.183Z">
+<meta property="og:updated_time" content="2021-03-18T09:09:47.490Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://fwj1635387072.github.io/2021/03/13/numpy/">
@@ -217,7 +217,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-14 11:09:13" itemprop="dateModified" datetime="2021-03-14T11:09:13+08:00">2021-03-14</time>
+                <time title="修改时间：2021-03-18 17:09:47" itemprop="dateModified" datetime="2021-03-18T17:09:47+08:00">2021-03-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,7 +237,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.6k</span>
+              <span>6.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -337,7 +337,7 @@
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">b = a.copy();</span><br><span class="line">print(str(a) + <span class="string">"\n"</span> +str(b))</span><br><span class="line">a[<span class="number">2</span>] = <span class="number">111</span></span><br><span class="line">print(str(a) + <span class="string">"\n"</span> +str(b))</span><br><span class="line">b[<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">print(str(a) + <span class="string">"\n"</span> +str(b))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">out:</span><br><span class="line">[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line">[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line">[  <span class="number">1</span>   <span class="number">2</span> <span class="number">111</span>]</span><br><span class="line">[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br><span class="line">[  <span class="number">1</span>   <span class="number">2</span> <span class="number">111</span>]</span><br><span class="line">[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 
-<p><code>tile()</code>：将传入的矩阵看作元素，复制为指定的矩阵。</p>
+<p><code>tile()平铺</code>：将传入的矩阵看作元素，复制为指定的矩阵。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">0</span>,<span class="number">40</span>,<span class="number">10</span>)</span><br><span class="line">b= np.tile(a,(<span class="number">3</span>,<span class="number">5</span>))</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br><span class="line"></span><br><span class="line">out：</span><br><span class="line">[ <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>]</span><br><span class="line">[[ <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>]</span><br><span class="line"> [ <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>]</span><br><span class="line"> [ <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>  <span class="number">0</span> <span class="number">10</span> <span class="number">20</span> <span class="number">30</span>]]</span><br></pre></td></tr></table></figure>
 
 <p><code>argsort()</code></p>
@@ -349,7 +349,11 @@
 <p>找出数组中与给定值最接近的数的下标</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">z = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">55</span>],[<span class="number">4</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">1</span>]])</span><br><span class="line">a = <span class="number">5.1</span></span><br><span class="line">print(np.abs(z-a).argmin())</span><br><span class="line"></span><br><span class="line">out：</span><br><span class="line"><span class="number">7</span></span><br></pre></td></tr></table></figure>
 
+<p>Numpy中更好的遍历方式<code>apply_along_axis</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = np.arange(<span class="number">11</span>,<span class="number">36</span>).reshape(<span class="number">5</span>,<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">y = np.apply_along_axis(np.sum, <span class="number">0</span>, x)</span><br><span class="line">print(y)</span><br><span class="line"></span><br><span class="line">y = np.apply_along_axis(np.sum,<span class="number">1</span>,x)</span><br><span class="line">print(y)</span><br></pre></td></tr></table></figure>
 
+<p>矩阵转置<code>transpose()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = np.arange(<span class="number">10</span>).reshape(<span class="number">2</span>,<span class="number">5</span>).transpose()</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
 
 <p>numpy中和线性代数相关的函数</p>
 <table>
@@ -578,7 +582,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -646,7 +650,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:18</span>
+    <span title="站点阅读时长">4:19</span>
 
   <br>
   <span id="sitetime"></span>
