@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="付文杰的博客">
 <meta property="og:description" content="Pandas的用法的总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-16T14:00:26.213Z">
+<meta property="og:updated_time" content="2021-03-21T08:40:30.002Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://fwj1635387072.github.io/2021/03/14/pandas/">
@@ -217,7 +217,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-16 22:00:26" itemprop="dateModified" datetime="2021-03-16T22:00:26+08:00">2021-03-16</time>
+                <time title="修改时间：2021-03-21 16:40:30" itemprop="dateModified" datetime="2021-03-21T16:40:30+08:00">2021-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,14 +237,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
+              <span>4.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
+              <span>8 分钟</span>
             </span>
 
         </div>
@@ -330,6 +330,51 @@
 
 <p>将Class列按基数打印,</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">which_class</span><span class="params">(row)</span>:</span></span><br><span class="line">    pclass = row[<span class="string">'Pclass'</span>]</span><br><span class="line">    <span class="keyword">if</span> pd.isnull(pclass):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Unknown"</span></span><br><span class="line">    <span class="keyword">elif</span> pclass == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"First Class"</span></span><br><span class="line">    <span class="keyword">elif</span> pclass == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Second Class"</span></span><br><span class="line">    <span class="keyword">elif</span> pclass == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Third Class"</span></span><br><span class="line">    </span><br><span class="line">classes = titanic_survival.apply(which_class,axis = <span class="number">1</span>)</span><br><span class="line">print(classes)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h1 id="Python基础部分"><a href="#Python基础部分" class="headerlink" title="Python基础部分"></a>Python基础部分</h1><h2 id="列表推导式和条件赋值"><a href="#列表推导式和条件赋值" class="headerlink" title="列表推导式和条件赋值"></a>列表推导式和条件赋值</h2><p>生成数字序列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">L = []</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_func</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*x</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    L.append(my_func(i))</span><br><span class="line">L</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L = [my_func(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br><span class="line">print(L)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L = [m + <span class="string">'_'</span> + n <span class="keyword">for</span> m <span class="keyword">in</span> [<span class="string">'a'</span>,<span class="string">'b'</span>] <span class="keyword">for</span> n <span class="keyword">in</span> [<span class="string">'c'</span>,<span class="string">'d'</span>]]</span><br><span class="line">print(L)</span><br></pre></td></tr></table></figure>
+
+<p>语法糖带有if选择的条件赋值<code>value = A if condition else b</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">value = <span class="string">'cat'</span> <span class="keyword">if</span> <span class="number">2</span> &gt; <span class="number">1</span> <span class="keyword">else</span> <span class="string">'dog'</span></span><br><span class="line">print(value)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将列表中超过5的元素用5替换</span></span><br><span class="line">L = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">L = [i <span class="keyword">if</span> i &lt; <span class="number">5</span> <span class="keyword">else</span> <span class="number">5</span> <span class="keyword">for</span> i <span class="keyword">in</span> L]</span><br><span class="line">print(L)</span><br></pre></td></tr></table></figure>
+
+<h2 id="匿名函数和map方法"><a href="#匿名函数和map方法" class="headerlink" title="匿名函数和map方法"></a>匿名函数和map方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">my_func = <span class="keyword">lambda</span> x : <span class="number">2</span>*x</span><br><span class="line">my_func(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">multi_para_func = <span class="keyword">lambda</span> a,b : a + b</span><br><span class="line">multi_para_func(<span class="number">10</span>,<span class="number">11</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(<span class="keyword">lambda</span> x : <span class="number">2</span>*x)(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br></pre></td></tr></table></figure>
+
+<p>对于列表推导式的匿名函数映射，可用map函数完成，返回map对象，用list转换。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(map(<span class="keyword">lambda</span> x: <span class="number">2</span>*x,range(<span class="number">5</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>多值输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(map(<span class="keyword">lambda</span> x,y: str(x)+<span class="string">'_'</span>+y , range(<span class="number">5</span>),list(<span class="string">'abcde'</span>)))</span><br></pre></td></tr></table></figure>
+
+<h2 id="zip对象和enumerate方法"><a href="#zip对象和enumerate方法" class="headerlink" title="zip对象和enumerate方法"></a>zip对象和enumerate方法</h2><p>zip可将多个可迭代对象打包成一个元组构成的可迭代对象，返回一个zip对象，通过tuple，list可以得到相应的打包结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">L1,L2,L3 = list(<span class="string">'abc'</span>),list(<span class="string">'def'</span>),list(<span class="string">'hij'</span>)</span><br><span class="line">list(zip(L1,L2,L3))</span><br><span class="line">tuple(zip(L1,L2,L3))</span><br><span class="line">out：</span><br><span class="line">[(<span class="string">'a'</span>, <span class="string">'d'</span>, <span class="string">'h'</span>), (<span class="string">'b'</span>, <span class="string">'e'</span>, <span class="string">'i'</span>), (<span class="string">'c'</span>, <span class="string">'f'</span>, <span class="string">'j'</span>)]</span><br><span class="line">((<span class="string">'a'</span>, <span class="string">'d'</span>, <span class="string">'h'</span>), (<span class="string">'b'</span>, <span class="string">'e'</span>, <span class="string">'i'</span>), (<span class="string">'c'</span>, <span class="string">'f'</span>, <span class="string">'j'</span>))</span><br></pre></td></tr></table></figure>
+
+<p>迭代的时候使用zip</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i,j,k <span class="keyword">in</span> zip(L1,L2,L3):</span><br><span class="line">    print(i,j,k)</span><br></pre></td></tr></table></figure>
+
+<p>enumerate特殊的打包，在迭代时绑定元素的遍历序号：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">L = list(<span class="string">'abcd'</span>)</span><br><span class="line"><span class="keyword">for</span> index,value <span class="keyword">in</span> enumerate(L):</span><br><span class="line">    print(index,value)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">for</span> index,value <span class="keyword">in</span> zip(range(len(L)),L):</span><br><span class="line">    print(index,value)</span><br></pre></td></tr></table></figure>
+
+<p>两个列表建立字典映射时，可用zip对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict(zip(L1,L2))</span><br></pre></td></tr></table></figure>
+
+<p>解压：zip和*配合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zipped = list(zip(L1,L2,L3))</span><br><span class="line">print(zipped)</span><br><span class="line">list(zip(*zipped))</span><br></pre></td></tr></table></figure>
+
+<h2 id="练习1："><a href="#练习1：" class="headerlink" title="练习1："></a>练习1：</h2><p>列表推导式写矩阵乘法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">M1 = np.random.rand(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">M2 = np.random.rand(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">ans = [[sum([M1[i][k] * M2[k,j] <span class="keyword">for</span> k <span class="keyword">in</span> range(M1.shape[<span class="number">1</span>])]) <span class="keyword">for</span> j <span class="keyword">in</span> range(M2.shape[<span class="number">1</span>])]<span class="keyword">for</span> i <span class="keyword">in</span> range(M1.shape[<span class="number">0</span>])]</span><br><span class="line"></span><br><span class="line">ans1 = np.dot(M1,M2)</span><br><span class="line">print(ans)</span><br><span class="line">print(ans1)</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -431,6 +476,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python基础部分"><span class="nav-number">1.</span> <span class="nav-text">Python基础部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表推导式和条件赋值"><span class="nav-number">1.1.</span> <span class="nav-text">列表推导式和条件赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名函数和map方法"><span class="nav-number">1.2.</span> <span class="nav-text">匿名函数和map方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip对象和enumerate方法"><span class="nav-number">1.3.</span> <span class="nav-text">zip对象和enumerate方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习1："><span class="nav-number">1.4.</span> <span class="nav-text">练习1：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -508,13 +554,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">156k</span>
+    <span title="站点总字数">158k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:20</span>
+    <span title="站点阅读时长">4:23</span>
 
   <br>
   <span id="sitetime"></span>
