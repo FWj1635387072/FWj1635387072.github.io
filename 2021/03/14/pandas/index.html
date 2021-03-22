@@ -58,7 +58,7 @@
 <meta property="og:site_name" content="付文杰的博客">
 <meta property="og:description" content="Pandas的用法的总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-03-21T08:40:30.002Z">
+<meta property="og:updated_time" content="2021-03-22T12:56:04.957Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://fwj1635387072.github.io/2021/03/14/pandas/">
@@ -217,7 +217,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-21 16:40:30" itemprop="dateModified" datetime="2021-03-21T16:40:30+08:00">2021-03-21</time>
+                <time title="修改时间：2021-03-22 20:56:04" itemprop="dateModified" datetime="2021-03-22T20:56:04+08:00">2021-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,14 +237,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
+              <span>6.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -377,6 +377,51 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">M1 = np.random.rand(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">M2 = np.random.rand(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">ans = [[sum([M1[i][k] * M2[k,j] <span class="keyword">for</span> k <span class="keyword">in</span> range(M1.shape[<span class="number">1</span>])]) <span class="keyword">for</span> j <span class="keyword">in</span> range(M2.shape[<span class="number">1</span>])]<span class="keyword">for</span> i <span class="keyword">in</span> range(M1.shape[<span class="number">0</span>])]</span><br><span class="line"></span><br><span class="line">ans1 = np.dot(M1,M2)</span><br><span class="line">print(ans)</span><br><span class="line">print(ans1)</span><br></pre></td></tr></table></figure>
 
 
+
+
+
+<h2 id="文件读写"><a href="#文件读写" class="headerlink" title="文件读写"></a>文件读写</h2><p><code>read_csv()  read_txt()   read_excel()</code>等，参数：</p>
+<p><code>header=None</code>：第一行不做列名</p>
+<p><code>index_col</code>：表示把某一列或几列作为索引</p>
+<p><code>usecols</code>：读取列的集合，默认读所有列</p>
+<p><code>parse_dates</code>：表示需要转换为时间的列</p>
+<p><code>nrows</code>：表示读取的行数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv(<span class="string">'my_csv.csv'</span>,index_col=[<span class="string">'col1'</span>,<span class="string">'col2'</span>])</span><br><span class="line"></span><br><span class="line">pd.read_table(<span class="string">'my_table.txt'</span>,usecols=[<span class="string">'col1'</span>,<span class="string">'col2'</span>])</span><br><span class="line">pd.read_csv(<span class="string">'my_csv.csv'</span>,parse_dates=[<span class="string">'col5'</span>])</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读取txt文件时，遇到非空格，自定义分割符</span></span><br><span class="line"><span class="comment"># sep</span></span><br><span class="line">pd.read_table(<span class="string">'my_table_special_sep.txt'</span>,sep=<span class="string">'\|\|\|\|'</span>,engine=<span class="string">'python'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>数据写入</p>
+<p>​    常用的操作是把index设置为False,特别当索引没有特殊意义的时候</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_csv.to_csv(<span class="string">'my_csv_saved.csv'</span>,index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    python中没有<code>to_table()</code>但是<code>to_csv</code>可以保存txt文件，<code>sep</code>指定分割符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_txt.to_csv(<span class="string">'../data/my_txt_saved.txt'</span>, sep=<span class="string">'\t'</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">'learn_pandas.csv'</span>)</span><br><span class="line">df.columns</span><br><span class="line"><span class="comment">#取前7列</span></span><br><span class="line">df = df[df.columns[:<span class="number">7</span>]]</span><br><span class="line">df</span><br></pre></td></tr></table></figure>
+
+<h3 id="汇总函数"><a href="#汇总函数" class="headerlink" title="汇总函数"></a>汇总函数</h3><p><code>head</code> 、<code>tail</code>、<code>info()</code>、<code>describe()</code></p>
+<p><code>info</code>和<code>describe</code>返回表中信息概况和对应主要统计量，</p>
+<p>如果想对一份数据集进行全面而有效的观察，特别是在列较多的情况下，推荐使用pandas-profiling包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">'learn_pandas.csv'</span>)</span><br><span class="line">df.info()</span><br><span class="line">df.describe()</span><br></pre></td></tr></table></figure>
+
+<h3 id="特征统计函数"><a href="#特征统计函数" class="headerlink" title="特征统计函数"></a>特征统计函数</h3><p><code>mean  sum  median  var  std  max  min</code></p>
+<p><code>quantile，count，indxmax</code>:分位数、非缺失值个数、最大值对应索引</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">df_demo = df[[<span class="string">'Height'</span>,<span class="string">'Weight'</span>]]</span><br><span class="line">print(df_demo.quantile(<span class="number">0.75</span>))</span><br><span class="line">print(df_demo.count())</span><br><span class="line">print(df_demo.idxmax())</span><br></pre></td></tr></table></figure>
+
+<h3 id="唯一值函数"><a href="#唯一值函数" class="headerlink" title="唯一值函数"></a>唯一值函数</h3><p><code>unique</code>和<code>nunique</code>可以分别得到其唯一值组成的列表和唯一值的个数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(df[<span class="string">'School'</span>].unique())</span><br><span class="line">print(df[<span class="string">'School'</span>].nunique())</span><br></pre></td></tr></table></figure>
+
+<p><code>value_counts</code>可以得到<strong>唯一值</strong>和其对应出现的<strong>频数</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'School'</span>].value_counts()</span><br></pre></td></tr></table></figure>
+
+<p>如果想要观察多个列组合的唯一值，可以使用<code>drop_duplicates</code>。其中的关键参数是<code>keep</code>，默认值<code>first</code>表示每个组合保留第一次出现的所在行，<code>last</code>表示保留最后一次出现的所在行，<code>False</code>表示把所有重复组合所在的行剔除。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">df_demo = df[[<span class="string">'Gender'</span>,<span class="string">'Transfer'</span>,<span class="string">'Name'</span>]]</span><br><span class="line">df_demo.drop_duplicates([<span class="string">'Gender'</span>,<span class="string">'Transfer'</span>])</span><br><span class="line"></span><br><span class="line">df_demo.drop_duplicates([<span class="string">'Gender'</span>, <span class="string">'Transfer'</span>], keep=<span class="string">'last'</span>)</span><br><span class="line"></span><br><span class="line">df_demo.drop_duplicates([<span class="string">'Name'</span>, <span class="string">'Gender'</span>], keep=<span class="literal">False</span>).head() <span class="comment"># 保留只出现过一次的性别和姓名组合</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="替换函数"><a href="#替换函数" class="headerlink" title="替换函数"></a>替换函数</h3><p>​    一般而言，替换操作是针对某一个列进行的，因此下面的例子都以<code>Series</code>举例。<code>pandas</code>中的替换函数可以归纳为三类：映射替换、逻辑替换、数值替换。其中映射替换包含<code>replace</code>方法、第八章中的<code>str.replace</code>方法以及第九章中的<code>cat.codes</code>方法，此处介绍<code>replace</code>的用法。</p>
+<p>​    在<code>replace</code>中，可以通过字典构造，或者传入两个列表来进行替换：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'Gender'</span>].replace(&#123;<span class="string">'Female'</span>:<span class="number">0</span>,<span class="string">'Male'</span>:<span class="number">1</span>&#125;).head()</span><br><span class="line">df[<span class="string">'Gender'</span>].replace([<span class="number">0</span>,<span class="number">1</span>],[<span class="string">'Female'</span>,<span class="string">'Male'</span>]).head()</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -476,7 +521,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python基础部分"><span class="nav-number">1.</span> <span class="nav-text">Python基础部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表推导式和条件赋值"><span class="nav-number">1.1.</span> <span class="nav-text">列表推导式和条件赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名函数和map方法"><span class="nav-number">1.2.</span> <span class="nav-text">匿名函数和map方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip对象和enumerate方法"><span class="nav-number">1.3.</span> <span class="nav-text">zip对象和enumerate方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习1："><span class="nav-number">1.4.</span> <span class="nav-text">练习1：</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python基础部分"><span class="nav-number">1.</span> <span class="nav-text">Python基础部分</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表推导式和条件赋值"><span class="nav-number">1.1.</span> <span class="nav-text">列表推导式和条件赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名函数和map方法"><span class="nav-number">1.2.</span> <span class="nav-text">匿名函数和map方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip对象和enumerate方法"><span class="nav-number">1.3.</span> <span class="nav-text">zip对象和enumerate方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#练习1："><span class="nav-number">1.4.</span> <span class="nav-text">练习1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件读写"><span class="nav-number">1.5.</span> <span class="nav-text">文件读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用函数"><span class="nav-number">1.6.</span> <span class="nav-text">常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#汇总函数"><span class="nav-number">1.6.1.</span> <span class="nav-text">汇总函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征统计函数"><span class="nav-number">1.6.2.</span> <span class="nav-text">特征统计函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唯一值函数"><span class="nav-number">1.6.3.</span> <span class="nav-text">唯一值函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#替换函数"><span class="nav-number">1.6.4.</span> <span class="nav-text">替换函数</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -554,13 +599,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">158k</span>
+    <span title="站点总字数">160k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">4:23</span>
+    <span title="站点阅读时长">4:26</span>
 
   <br>
   <span id="sitetime"></span>
