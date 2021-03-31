@@ -50,16 +50,18 @@
   };
 </script>
 
-  <meta name="description" content="兰州交通大学 | 本科生  信息管理与信息系统">
-<meta property="og:type" content="website">
-<meta property="og:title" content="付文杰的博客">
-<meta property="og:url" content="https:&#x2F;&#x2F;fwj1635387072.github.io&#x2F;archives&#x2F;2020&#x2F;02&#x2F;index.html">
+  <meta name="description" content="pandas练习题">
+<meta name="keywords" content="学习笔记,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pandas练习题1">
+<meta property="og:url" content="https:&#x2F;&#x2F;fwj1635387072.github.io&#x2F;2021&#x2F;03&#x2F;30&#x2F;exercise&#x2F;index.html">
 <meta property="og:site_name" content="付文杰的博客">
-<meta property="og:description" content="兰州交通大学 | 本科生  信息管理与信息系统">
+<meta property="og:description" content="pandas练习题">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-03-30T13:47:34.511Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://fwj1635387072.github.io/archives/2020/02/">
+<link rel="canonical" href="https://fwj1635387072.github.io/2021/03/30/exercise/">
 
 
 <script id="page-configurations">
@@ -67,14 +69,14 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
 
-  <title>归档 | 付文杰的博客</title>
+  <title>Pandas练习题1 | 付文杰的博客</title>
   
 
 
@@ -180,70 +182,265 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">不错! 目前共计 57 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://FWj1635387072.github.io/2021/03/30/exercise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headImage.jpg">
+      <meta itemprop="name" content="付文杰">
+      <meta itemprop="description" content="兰州交通大学 | 本科生 <br> 信息管理与信息系统">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="付文杰的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pandas练习题1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-30 21:45:45 / 修改时间：21:47:34" itemprop="dateCreated datePublished" datetime="2021-03-30T21:45:45+08:00">2021-03-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <p>pandas练习题</p>
+<a id="more"></a>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">chipo = pd.read_csv(<span class="string">'chipotle.tsv'</span>,sep=<span class="string">'\t'</span>)</span><br><span class="line">chipo.head()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}</code></pre><p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order_id</th>
+      <th>quantity</th>
+      <th>item_name</th>
+      <th>choice_description</th>
+      <th>item_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Chips and Fresh Tomato Salsa</td>
+      <td>NaN</td>
+      <td>$2.39</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Izze</td>
+      <td>[Clementine]</td>
+      <td>$3.39</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Nantucket Nectar</td>
+      <td>[Apple]</td>
+      <td>$3.39</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Chips and Tomatillo-Green Chili Salsa</td>
+      <td>NaN</td>
+      <td>$2.39</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>2</td>
+      <td>Chicken Bowl</td>
+      <td>[Tomatillo-Red Chili Salsa (Hot), [Black Beans...</td>
+      <td>$16.98</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chipo.shape[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>4622</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chipo.columns</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>Index([&apos;order_id&apos;, &apos;quantity&apos;, &apos;item_name&apos;, &apos;choice_description&apos;,
+       &apos;item_price&apos;],
+      dtype=&apos;object&apos;)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chipo.index</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>RangeIndex(start=0, stop=4622, step=1)</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chipo[<span class="string">'item_name'</span>].nunique()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>50</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chipo[<span class="string">'choice_description'</span>].value_counts().head(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>[Diet Coke]    134
+Name: choice_description, dtype: int64</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chipo[<span class="string">'quantity'</span>].sum()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>4972</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dollarizer = <span class="keyword">lambda</span> x:float(x[<span class="number">1</span>:<span class="number">-1</span>])</span><br><span class="line">chipo[<span class="string">'item_price'</span>] = chipo[<span class="string">'item_price'</span>].apply(dollarizer)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chipo[<span class="string">'sub_total'</span>] = round(chipo[<span class="string">'item_price'</span>] * chipo[<span class="string">'quantity'</span>],<span class="number">2</span>)</span><br><span class="line">chipo.head(<span class="number">10</span>)</span><br><span class="line">chipo[<span class="string">'sub_total'</span>].sum()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>39237.02</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-26T14:41:49+08:00"
-              content="2020-02-26">
-          02-26
-        </time>
+      
+      <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+        
       </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/26/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B7/" itemprop="url">
-            <span itemprop="name">算法竞赛准备7----练习题3（Java语言）</span>
-          </a>
-      </h2>
+      <footer class="post-footer">
 
-    </header>
+
+
+        
+<div>    
+ 
+ 
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+      <strong>本文作者：</strong>付文杰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="/2021/03/30/exercise/" title="Pandas练习题1">2021/03/30/exercise/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权： </strong>
+    本站文章均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议，请勿用于商业，转载注明出处！
+  </li>
+</ul>
+
+</div>
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 学习笔记</a>
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/03/30/Untitled%201/" rel="next" title="Untitled 1">
+                  <i class="fa fa-chevron-left"></i> Untitled 1
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-02-03T13:32:32+08:00"
-              content="2020-02-03">
-          02-03
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/02/03/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B6/" itemprop="url">
-            <span itemprop="name">算法竞赛准备6----练习2（Java语言）</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
